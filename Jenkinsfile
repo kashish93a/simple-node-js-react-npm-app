@@ -1,8 +1,8 @@
 pipeline {
-    agent any{
-            docker {
-                image 'node:lts-slim'
-                args '-p 3000:3000 '
+    agent {
+        docker {
+            image 'node:lts-slim'
+            args '-p 3000:3000 '
         }
     }
     environment {
