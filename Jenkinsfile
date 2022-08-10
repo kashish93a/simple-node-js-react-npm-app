@@ -1,8 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'node:lts-bullseye-slim'
-            args '-p 3000:3000 -p 5000:5000 -u root'
+            image 'node:lts-slim'
+            args '-p 3000:3000 '
         }
     }
     environment {
@@ -12,6 +12,11 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './jenkins/scripts/test.sh'
             }
         }
     }
